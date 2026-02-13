@@ -1,3 +1,4 @@
+<?php /*
 [
   {
     "path": "mods/tacz-1.20.1-1.1.7-hotfix.jar",
@@ -32,3 +33,4 @@
     "url": "https://raw.githubusercontent.com/predadev/predadev.github.io/main/RUSHE.mp3"
   }
 ]
+*/ ?>
