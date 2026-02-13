@@ -1,67 +1,34 @@
-<?php
-function ScanDirectory($Directory, $dirCheckUselessFiles = array(), $tableau=false, $ignoreEntry = ['.','..',
-	'index.php',".htaccess"], $ignoreDirectory = array()){
-$slash = '';
-	$MyDirectory = opendir($Directory) or die('Erreur');
-	while($Entry = @readdir($MyDirectory)){
-		if(!equal($Entry,$ignoreEntry)){
-			if(is_dir($Directory.'/'.$Entry)){
-				$slash = '/';			
-			}
-                        else
-                        {
-                         $slash = '';
-                        }
-            $elem = substr($Directory.'/'.$Entry, strlen(strstr($Directory.'/'.$Entry, '/', true))+1).$slash;
-			$tableau[] = array(
-				"path"=>$elem,
-				"checksumSHA1"=>is_dir($elem) ? false : sha1_file($elem),
-				"url"=>(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://".$_SERVER['HTTP_HOST'].str_replace("index.php","",$_SERVER['REQUEST_URI']).$elem
-			);
-			if(!contain($Directory,$ignoreDirectory) && is_dir($Directory.'/'.$Entry)){
-				$tableau = ScanDirectory($Directory.'/'.$Entry,array(),$tableau,$ignoreEntry,$ignoreDirectory);
-			}
-		}
-	}
-	foreach($dirCheckUselessFiles as $v){
-        $tableau[] = array(
-            "dirCheckUselessFiles"=>$v
-        );
-    }
-	closedir($MyDirectory);
-	return $tableau;
-}
-
-function contain($file,$array){
-	foreach ($array as $value) {
-		if(strpos($file,$value) !== false){
-			return true;
-		}
-	}
-	return false;
-}
-
-function equal($file,$array){
-	foreach ($array as $value) {
-		if($file == $value){
-			return true;
-		}
-	}
-	return false;
-}
-
-function contains($files,$array){
-	foreach ($files as $value) {
-		if(contain($value,$array)){
-			return true;
-		}
-	}
-	return false;
-}
-
-// Si vous souhaitez faire supprimer des vieux fichiers dans des répertoires prédéfinis c'est par ici
-// Ajoutez dans le tableau ci-après le répertoire à faire analyser
-$tableau = ScanDirectory('.',["mods","config"]);
-$tableau = $tableau == false ? [] : $tableau;
-echo json_encode($tableau);
-?>
+[
+  {
+    "path": "mods/tacz-1.20.1-1.1.7-hotfix.jar",
+    "url": "https://raw.githubusercontent.com/predadev/predadev.github.io/main/mods/tacz-1.20.1-1.1.7-hotfix.jar"
+  },
+  {
+    "path": "mods/create-1.20.1-6.0.8.jar",
+    "url": "https://raw.githubusercontent.com/predadev/predadev.github.io/main/mods/create-1.20.1-6.0.8.jar"
+  },
+  {
+    "path": "mods/CreativeCore_FORGE_v2.12.32_mc1.20.1.jar",
+    "url": "https://raw.githubusercontent.com/predadev/predadev.github.io/main/mods/CreativeCore_FORGE_v2.12.32_mc1.20.1.jar"
+  },
+  {
+    "path": "mods/EnhancedVisuals_FORGE_v1.8.2_mc1.20.1.jar",
+    "url": "https://raw.githubusercontent.com/predadev/predadev.github.io/main/mods/EnhancedVisuals_FORGE_v1.8.2_mc1.20.1.jar"
+  },
+  {
+    "path": "mods/lradd-1.20.1-0.3.0.jar",
+    "url": "https://raw.githubusercontent.com/predadev/predadev.github.io/main/mods/lradd-1.20.1-0.3.0.jar"
+  },
+  {
+    "path": "mods/lrtactical-1.20.1-0.3.0.jar",
+    "url": "https://raw.githubusercontent.com/predadev/predadev.github.io/main/mods/lrtactical-1.20.1-0.3.0.jar"
+  },
+  {
+    "path": "mods/[1.20.1] SecurityCraft v1.10.1.jar",
+    "url": "https://raw.githubusercontent.com/predadev/predadev.github.io/main/mods/%5B1.20.1%5D%20SecurityCraft%20v1.10.1.jar"
+  },
+  {
+    "path": "RUSHE.mp3",
+    "url": "https://raw.githubusercontent.com/predadev/predadev.github.io/main/RUSHE.mp3"
+  }
+]
