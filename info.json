@@ -1,0 +1,21 @@
+{
+  "maintenance": false,
+  "maintenance_message": "Le serveur est actuellement en maintenance pour l'ajout de nouvelles armes et équipements TACZ. Réouverture prochaine !",
+  "version": "1.0.0",
+  "zip_url": "https://votre-site-ou-vps.fr/enoplos-tacz-mods.zip",
+  "server": {
+    "name": "Enoplos TACZ Warfare"
+  },
+  "news": [
+    {
+      "title": "Déploiement Initial TACZ 1.20.1",
+      "date": "24/08/2026",
+      "content": "Pack d'armes à feu réalistes et équipements de combat opérationnels."
+    },
+    {
+      "title": "Protocoles de Combat Sécurisés",
+      "date": "24/08/2026",
+      "content": "Connexion directe et synchronisation automatique activées."
+    }
+  ]
+}
